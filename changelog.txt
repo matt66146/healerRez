@@ -1,1 +1,2 @@
 v0.2 - Only allows raid leaders and assistants to run
+v0.3 - Now verifies dead player is connected before adding to list of players to be ressurected
