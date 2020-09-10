@@ -1,5 +1,4 @@
 SLASH_PHRASE1 = "/hrez"
-
 SlashCmdList["PHRASE"] = function(msg)
 
     -- Only allow raid leaders and assistants to run the addon
