@@ -9,7 +9,7 @@ SlashCmdList["PHRASE"] = function(msg)
         deadIterator = 0
         -- Get Dead People
         for i=1,40 do
-            if UnitIsDeadOrGhost("raid" .. i) then
+            if UnitIsDeadOrGhost("raid" .. i) and UnitIsConnected("raid" .. i) then
                 table.insert(deads,{name = UnitName("raid" .. i),healer = IsHealer(i)})
             end
         end

@@ -1,3 +1,4 @@
 package-as: healerRez
 manual-changelog: changelog.txt
-ignore: changelog.txt
+ignore:
+    - changelog.txt
