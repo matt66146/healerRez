@@ -10,7 +10,7 @@ SlashCmdList["PHRASE"] = function(msg)
         -- Get Dead People
         for i=1,40 do
             if UnitIsDeadOrGhost("raid" .. i) and UnitIsConnected("raid" .. i) then
-                table.insert(deads,{name = UnitName("raid" .. i),healer = IsHealer(i)})
+                table.insert(deads,{name = UnitName("raid" .. i),healer = IsHealer(i), raidId = "raid" .. i})
             end
         end
 
@@ -24,7 +24,7 @@ SlashCmdList["PHRASE"] = function(msg)
             className, classFilename, classId = UnitClass("raid" .. i)
             if not UnitIsDeadOrGhost("raid" .. i) and UnitIsConnected("raid" .. i) then
                 if classId == 2 or classId == 5 or classId == 7 then
-                    table.insert(rezers,{name = UnitName("raid" .. i),mana = UnitPower("raid" .. i)})
+                    table.insert(rezers,{name = UnitName("raid" .. i),mana = UnitPower("raid" .. i)}) 
                 end
             end
         end
@@ -39,6 +39,7 @@ SlashCmdList["PHRASE"] = function(msg)
             if deads[iterator] ~= nil then
                 SendChatMessage(rezer.name .. " Rez " .. deads[iterator].name, "RAID_WARNING");
                 SendChatMessage("Rez " .. deads[iterator].name, "WHISPER", nil, rezer.name);
+                C_ChatInfo.SendAddonMessage("mattrez", deads[iterator].name .. "," .. deads[iterator].raidId , "WHISPER", rezer.name)
                 iterator = iterator + 1
             end
         end
