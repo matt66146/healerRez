@@ -1,2 +1,4 @@
 v0.2 - Only allows raid leaders and assistants to run
 v0.3 - Now verifies dead player is connected before adding to list of players to be ressurected
+v0.31 beta - Added a button for easy ressurecting
+v0.4 - Added a button with icon for easy ressurecting

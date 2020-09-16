@@ -55,13 +55,20 @@ CreateButton = function(d, r)
     btn:SetSize(50,50)
     btn:SetPoint("CENTER", 0,0)
     btn:SetAttribute("type", "macro");
+    btn.text = _G[btn:GetName().."Text"]
+    btn.text:SetText("Rez")
+    local icon = btn:CreateTexture(nil, "ARTWORK")
+    icon:SetAllPoints(true)
+    name, rank, icon2, castTime, minRange, maxRange = GetSpellInfo(2006)
+    icon:SetTexture(icon2)
+    btn.icon = icon
     --print(HealingSpellName())
     local macro = "/target " .. d.. "\n/cast " .. HealingSpellName()
     btn:SetAttribute("macrotext", macro)
     --print(macro)
 
     btn:Show();
-    C_Timer.After(5, HideButton);
+    C_Timer.After(2, HideButton);
 end
 
 
