@@ -1,3 +1,4 @@
+
 function split(s, delimiter)
     result = {};
     for match in (s..delimiter):gmatch("(.-)"..delimiter) do
@@ -53,7 +54,44 @@ rId = ""
 CreateButton = function(d, r)
     rId = r
     btn:SetSize(50,50)
-    btn:SetPoint("CENTER", 0,0)
+    btn:SetMovable(true)
+    btn:EnableMouse(true)
+    btn:SetUserPlaced(true)
+    btn:SetClampedToScreen(true)
+    btn:SetScript("OnMouseDown", function(self, button)
+        if button == "LeftButton" and not self.isMoving then
+            if (IsControlKeyDown()) then
+                self:StartMoving();
+                self.isMoving = true;
+               
+               
+            end
+        end
+    end)
+    btn:SetScript("OnMouseUp", function(self, button)
+        if button == "LeftButton" and self.isMoving then
+            self:StopMovingOrSizing();
+            self.isMoving = false;
+            --local x, y = GetCursorPosition();
+            local x = btn:GetLeft()
+            local y = btn:GetBottom()
+       
+            ButtonxOfs = x
+            ButtonyOfs = y
+        end
+    end)
+
+
+
+    if ButtonxOfs == nil then
+        print("NO SAVE")
+        ButtonxOfs = (GetScreenWidth()/2)
+    end
+    if ButtonyOfs == nil then
+        ButtonyOfs = (GetScreenHeight()/2)
+    end
+
+    btn:SetPoint("BOTTOMLEFT", ButtonxOfs,ButtonyOfs)
     btn:SetAttribute("type", "macro");
     btn.text = _G[btn:GetName().."Text"]
     btn.text:SetText("Rez")
@@ -66,7 +104,6 @@ CreateButton = function(d, r)
     local macro = "/target " .. d.. "\n/cast " .. HealingSpellName()
     btn:SetAttribute("macrotext", macro)
     --print(macro)
-
     btn:Show();
     C_Timer.After(2, HideButton);
 end

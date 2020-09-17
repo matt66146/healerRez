@@ -2,6 +2,7 @@
 ## Title: healerRez
 ## Notes: None
 ## Version: 0.1
+## SavedVariables: ButtonxOfs, ButtonyOfs
 
 healerRez.lua
 ezRezButton.lua
