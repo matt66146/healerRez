@@ -3,3 +3,4 @@ v0.3 - Now verifies dead player is connected before adding to list of players to
 v0.31 beta - Added a button for easy ressurecting
 v0.4 - Added a button with icon for easy ressurecting
 v0.5 - Added ability to move icon by holding the CTRL key
+v0.6 - Now only assigns healers that are not flagged as AFK and are in the same zone as the player who is assigning the ressurections
