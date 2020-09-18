@@ -22,7 +22,8 @@ SlashCmdList["PHRASE"] = function(msg)
         --  Get Alive Healers
         for i=1,40 do
             className, classFilename, classId = UnitClass("raid" .. i)
-            if not UnitIsDeadOrGhost("raid" .. i) and UnitIsConnected("raid" .. i) then
+            n, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(i);
+            if not UnitIsDeadOrGhost("raid" .. i) and UnitIsConnected("raid" .. i) and not UnitIsAFK("raid" .. i) and zone == GetZoneText() then
                 if classId == 2 or classId == 5 or classId == 7 then
                     table.insert(rezers,{name = UnitName("raid" .. i),mana = UnitPower("raid" .. i)}) 
                 end
